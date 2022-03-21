@@ -1,8 +1,7 @@
-from django.contrib.auth.models import User
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import messages
 from .forms import registerform, editform, editadminform
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, SetPasswordForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, SetPasswordForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 
 
@@ -51,7 +50,7 @@ def index(request):
                 fm = editadminform(request.POST, instance=request.user)
 
             else:
-                 fm = editform(request.POST, instance=request.user)
+                fm = editform(request.POST, instance=request.user)
             if fm.is_valid():
                 fm.save()
                 messages.success(request, 'data update')
