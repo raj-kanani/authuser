@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+<h3>welcome to Home page....{{name}}</h3>
+<button><a href="/loggout/">LOG-OUT</a></button>
+<br><br>
+<button><a href="/change_pwd/">Change PWD</a></button>
+<br><br>
+<button><a href="/change_pwd1/">Change PWD1...</a></button>
+<br><br>
+{% if messages %}
+{% for message in messages %}
+{% if message.tags %} {{message.tags}} {% endif%}
+{{message}}
+{% endfor %}
+{% endif %}
+<form action="" method="POST" novalidate>
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p>{{error}}</p>
+    {% endfor %}
+    {% endif %}
+    {% for fm in form %}
+    {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}<br><br>
+    {% endfor %}
+    <input type="submit" value="submit">
+</form>
+<br><br>
+
+</body>
+</html>
