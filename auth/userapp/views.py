@@ -64,6 +64,11 @@ def index(request):
         return HttpResponseRedirect('/loggin/')
 
 
+
+
+
+
+
 # simple index without user data display
 # def index(request):
 #     if request.user.is_authenticated:
